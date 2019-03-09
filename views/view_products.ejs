@@ -1,0 +1,115 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+
+    <title>View Products</title>
+
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/js/bootstrap.min.js"></script>
+
+</head>
+<body>
+
+<nav class="navbar navbar-inverse">
+    <div class="container-fluid">
+        <div class="navbar-header">
+            <a class="navbar-brand" href="#">Inventory Management</a>
+        </div>
+        <ul class="nav navbar-nav">
+            <li><a href="/logout">Logout</a></li>
+        </ul>
+    </div>
+</nav>
+
+    <div class="container">
+
+    <div class="add-product">
+        <a href="/addproduct" class="btn btn-primary">Add Product</a>
+    </div>
+
+    <div class="row">
+        <div class='col-lg-6 col-lg-offset-3'>
+            <div class="alert alert-dismissible">
+
+                <% if(messages.success){%>
+                    <div class="alert alerts alert-success alert-dismissible pull-right" role="alert">
+                        <span><%= messages.success%></span>
+                        <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
+                <% }%>
+
+                <% if(messages.error){%>
+                    <div class="alert alerts alert-danger alert-dismissible pull-right" role="alert">
+                        <span><%= messages.error%></span>
+                        <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
+                <% }%>
+
+            </div>
+        </div>
+    </div>
+
+    <div>
+         <h1>View Products</h1>
+    </div>
+
+    <div>
+        <div>
+
+            <table class="table table-hover" id="table" style="border: 1px">
+                <thead>
+                <tr>
+                    <th>ID</th>
+                    <th>Title</th>
+                    <th>Description</th>
+                    <th>Quantity</th>
+                    <th>Image</th>
+                    <th>Action</th>
+                </tr>
+                </thead>
+                <tbody>
+
+                <% try { if(data.length){
+                for(var i = 0;i < data.length;i++) { %>
+                <tr>
+                    <td><%=data[i].id%></td>
+                    <td>
+                        <%=data[i].title%>
+                    </td>
+                    <td>
+                        <%=data[i].description%>
+                    </td>
+                    <td>
+                        <%=data[i].quantity%>
+                    </td>
+                    <td><img src="/assets/img/<%= data[i].image %>" alt="" height="100" width="100"></td>
+
+                    <td>
+                        <a href="/editproduct/<%=data[i].id%>"><button type="button" class="btn btn-info">Edit</button></a>
+                        <a href="/deleteproduct/<%=data[i].id%>"><button type="button" class="btn btn-danger">Delete</button></a>
+                    </td>
+                </tr>
+
+                <%  }}else{ %>
+                    <tr>
+                        <td colspan="3">No Data found
+                        </td>
+                    </tr>
+                <% } }catch (ex){}%>
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>
+
+</body>
+</html>

@@ -1,0 +1,64 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+
+    <title>Login</title>
+
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/js/bootstrap.min.js"></script>
+
+</head>
+<body>
+
+<% if(messages.success){%>
+    <div class="alert alerts alert-success alert-dismissible pull-right" role="alert">
+        <span><%= messages.success%></span>
+        <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+        </button>
+    </div>
+<% }%>
+
+<% if(messages.error){%>
+    <div class="alert alerts alert-success alert-dismissible pull-right" role="alert">
+        <span><%= messages.error%></span>
+        <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+        </button>
+    </div>
+<% }%>
+
+<div class="container">
+    <div class="col-lg-4 col-md-4 col-sm-4 col-xs-4">
+    <h1>Login</h1>
+
+    <form action="logincheck" method="post" id="loginForm">
+
+        <div class="form-group">
+            <label for="username">Username</label>
+            <input type="text" name="username" id="username" placeholder="Username" title="Please Enter Your Username" required="" value="" autocomplete="off" class="form-control">
+        </div>
+        <div class="form-group">
+            <label for="password">Password</label>
+            <input type="password" name="password" id="password" title="Please Enter Your Password" placeholder="******" required="" value="" class="form-control">
+        </div>
+
+        <button type="submit" class="btn btn-success btn-block">Login</button>
+
+        <br>
+        <label for="">Not a Member???</label>
+        <a href="/registration" class="btn btn-success btn-block">Register Here</a>
+
+    </form>
+
+</div>
+
+
+</div>
+</body>
+</html>
